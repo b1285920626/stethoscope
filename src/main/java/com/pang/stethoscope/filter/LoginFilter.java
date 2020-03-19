@@ -25,6 +25,7 @@ public class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         filterChain.doFilter(servletRequest, servletResponse);
+        //TODO: 登录日志...这里是不是应该写权限校验而不是登录日志
         //loggeer.addLog("admin","login");
     }
 

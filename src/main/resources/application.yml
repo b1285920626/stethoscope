@@ -1,18 +1,52 @@
 server:
   port: 8090
+  servlet:
+    context-path: /stethoscope
 
 spring:
   #数据源
   datasource:
-    url: jdbc:mysql://localhost:3306/springbootdb??useUnicode=true&amp;characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/stethoscope?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
-    password: 123456
+    password: bxh123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+    #启动时需要的建表语句
+    schema: classpath:schema-mysql.sql
+    #启动时初始化数据
+    data: classpath:data-mysql.sql
+    #embedded好像是部署后一次
+    initialization-mode: always
+
+    #druid相关
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      #初始化时建立物理连接的个数
+      initial-size: 1
+      #最小连接池数量
+      min-idle: 3
+      #最大连接池数量
+      max-active: 10
+      #获取连接时最大等待时间
+      max-wait: 12000
+      #配置监控页面访问登录名称和访问密码
+      stat-view-servlet:
+        enabled: true
+        login-username: admin
+        login-password: 123456
+      #是否开启慢sql查询监控
+      #慢SQL执行时间
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1
+      filters: stat, wall, slf4j
 
 mybatis:
   typeAliasesPackage: com.pang.stethoscope.pojo
   mapperLocations: classpath:mabatis/mapper/*.xml
-  #configLocation: classpath:/mybatis-config.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    default-enum-type-handler: com.pang.stethoscope.handlers.ValueEnumTypeHandler
 
 #showSQL
 logging:
