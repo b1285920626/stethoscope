@@ -1,0 +1,39 @@
+body{
+    background-color: snow;
+    margin: 0;
+}
+
+#header{
+    height: 300px;
+}
+
+
+#nav{
+    background-color: #454546;
+    height: 48px;
+}
+
+#title{
+    height: 48px;
+}
+
+#banner{
+    height: 48px;
+}
+
+#warpper{
+    height: 1200px;
+}
+
+#content{
+    width: 800px;
+}
+
+#sidebar{
+    width: 200px;
+}
+
+#footer{
+    background-color: dimgray;
+    height: 48px;
+}
