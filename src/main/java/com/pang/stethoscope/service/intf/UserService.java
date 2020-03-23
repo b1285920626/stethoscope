@@ -1,4 +1,4 @@
-package com.pang.stethoscope.service;
+package com.pang.stethoscope.service.intf;
 
 
 import java.util.List;

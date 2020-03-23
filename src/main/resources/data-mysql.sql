@@ -1,3 +1,4 @@
+#没写呢
 INSERT INTO tb_user (user_name,password,email,create_time,last_login_time,is_effective,limits)
 VALUES ('pang','123456','pang@pang.com',sysdate(),sysdate(),0,200);
 

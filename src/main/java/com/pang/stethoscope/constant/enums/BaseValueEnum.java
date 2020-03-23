@@ -1,4 +1,4 @@
-package com.pang.stethoscope.enums;
+package com.pang.stethoscope.constant.enums;
 
 /**
  * 用于mybatis处理enum持久化

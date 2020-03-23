@@ -1,0 +1,72 @@
+# docker启动的容器：
+#   docker run -d --name redis-test -p 16379:6379 redis
+#   docker run -d --name mysql-test -e MYSQL_ROOT_PASSWORD=123456 -p 13306:3306 mysql
+
+
+server:
+  port: 8090
+  servlet:
+    context-path: /stethoscope
+
+spring:
+  #连接池
+  datasource:
+    url: jdbc:mysql://127.0.0.1:13306/stethoscope?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #启动时需要的建表语句
+    schema: classpath:schema-mysql.sql
+    #启动时初始化数据
+    data: classpath:data-mysql.sql
+    #以上两个脚本执行时机
+    initialization-mode: always
+
+    #druid相关
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      #初始化时建立物理连接的个数
+      initial-size: 1
+      #最小连接池数量
+      min-idle: 3
+      #最大连接池数量
+      max-active: 10
+      #获取连接时最大等待时间
+      max-wait: 5000
+      #配置监控页面访问登录名称和访问密码
+      stat-view-servlet:
+        enabled: true
+        login-username: admin
+        login-password: 123456
+      #是否开启慢sql查询监控
+      #慢SQL执行时间
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1
+      filters: stat, wall, slf4j
+
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 16379
+    password:
+    timeout: 2000
+
+mybatis:
+  typeAliasesPackage: com.pang.stethoscope.model.entity
+  mapperLocations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    default-enum-type-handler: com.pang.stethoscope.utils.ValueEnumTypeHandler
+
+#日志系统设置
+logging:
+  level:
+    com:
+      root: INFO
+      pang:
+        stethoscope:
+          mapper: DEBUG
+
+

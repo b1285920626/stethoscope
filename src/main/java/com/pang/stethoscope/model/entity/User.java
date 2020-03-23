@@ -1,4 +1,4 @@
-package com.pang.stethoscope.pojo;
+package com.pang.stethoscope.model.entity;
 
 public class User {
     private String name;

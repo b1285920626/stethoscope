@@ -1,4 +1,4 @@
-package com.pang.stethoscope.enums;
+package com.pang.stethoscope.constant.enums;
 
 /**
  * @author BaiPang

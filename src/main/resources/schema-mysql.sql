@@ -1,3 +1,4 @@
+# 数据库初始化,没写呢
 DROP TABLE IF EXISTS tb_user;
 
 CREATE TABLE tb_user

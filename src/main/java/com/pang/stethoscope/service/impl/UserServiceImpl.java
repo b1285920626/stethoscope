@@ -2,7 +2,7 @@ package com.pang.stethoscope.service.impl;
 
 
 import com.pang.stethoscope.mapper.UserMapper;
-import com.pang.stethoscope.service.UserService;
+import com.pang.stethoscope.service.intf.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

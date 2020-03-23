@@ -1,6 +1,6 @@
-package com.pang.stethoscope.handlers;
+package com.pang.stethoscope.utils;
 
-import com.pang.stethoscope.enums.BaseValueEnum;
+import com.pang.stethoscope.constant.enums.BaseValueEnum;
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 
